@@ -26,7 +26,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <div className="container mx-auto p-4">
+          <div className="h-8" /> {/* Navbar placeholder */}
+          {children}
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
