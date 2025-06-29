@@ -78,8 +78,7 @@ async function createGamesForSeason(season: string, teams: TeamData[], gamesPerT
         }
 
         // Generate messages count
-        const messageCount =
-          season === '20232024' && i < 12 ? 0 : faker.number.int({ min: 100, max: 3000 })
+        const messageCount = faker.number.int({ min: 100, max: 3000 })
 
         const gameData = {
           season,
@@ -104,9 +103,9 @@ async function seed() {
   console.time(`🌱 Database has been seeded`)
 
   console.time('🧹 Cleaned up the database...')
-  await prisma.team.deleteMany()
-  await prisma.teamLogo.deleteMany()
   await prisma.game.deleteMany()
+  await prisma.teamLogo.deleteMany()
+  await prisma.team.deleteMany()
   console.timeEnd('🧹 Cleaned up the database...')
 
   await createTeams()
