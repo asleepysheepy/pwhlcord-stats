@@ -1,88 +1,109 @@
-# Welcome to React Router!
+# PWHLCord Stats
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A site for tracking meta stats from the unofficial PWHL Discord server
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## Table of Contents
 
-## Features
+- [Bug Reports](#bug-reports)
+- [Developing](#developing)
+    - [Requirements](#requirements)
+    - [Dependencies and Frameworks](#dependencies-and-frameworks)
+    - [Setup and Running](#setup-and-running)
+    - [Useful Scripts](#useful-scripts)
+    - [Additional Commands](#additional-commands)
+- [Deploying](#deploying)
+- [Contributing](#contributing)
+- [License](#license)
+- [Disclaimers](#disclaimers)
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## Bug Reports
 
-## Getting Started
+Please report bugs by opening an [issue](https://github.com/asleepysheepy/pwhlcord-stats/issues/new) on GitHub.
 
-### Installation
+## Developing
 
-Install the dependencies:
+### Requirements
 
-```bash
+- [NodeJS](https://nodejs.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+  - Can be installed locally, through docker/docker-compose, or through a service like [Neon](https://neon.com/)
+
+### Dependencies and Frameworks
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [React](https://react.dev/)
+- [React Router](https://reactrouter.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Radix UI](https://www.radix-ui.com/) / [shadcn](https://ui.shadcn.com/)
+- [Lucide Icons](https://lucide.dev/icons/)
+- [Prisma](https://www.prisma.io/)
+- [Vitest](https://vitest.dev/)
+- [Testing Library](https://testing-library.com/)
+- [Storybook](https://storybook.js.org/)
+- [Prettier](https://prettier.io/) and [ESLint](https://eslint.org/)
+
+### Setup and Running
+
+1. Start by cloning the repo locally
+
+```sh
+git clone https://github.com/asleepysheepy/pwhlcord-stats.git && cd pwhlcord-stats
+```
+
+2. Install NPM dependencies
+
+```sh
 npm install
 ```
 
-### Development
+3. Create `.env` file
 
-Start the development server with HMR:
+```sh
+cp .env.example .env
+```
 
-```bash
+5. Setup the database
+
+```sh
+npx prisma migrate dev
+```
+
+6. Run the app in development mode
+
+```sh
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+### Useful Scripts
 
-## Building for Production
+- `build` - Gets the app ready for production. Generates the Prisma client, migrates the database, and creates a production build of the app
+- `dev` - Runs the app in development mode
+- `format` - Uses Prettier to format the codebase
+- `lint` - Uses ESLint to lint the codebase, can be run with the `--fix` option to automatically fix many issues
+- `start` - Starts the production build of the app
+- `test` - Runs the test suite
+- `test:watch` - Runs the test suite in "watch" mode, automatically rerunning the suite when code changes are saved
+- `typecheck` - Checks the type safety of the codebase using typescript
+- `validate` - Shortcut to run `typecheck`, `lint`, and `test` together
 
-Create a production build:
+### Additional Commands
 
-```bash
-npm run build
-```
+- `npx prisma db seed` - Seeds the database
+- `npx prisma migrate dev` - Runs database migrations for development
+- `npx prisma migrate reset` - Drops and recreates the database
 
-## Deployment
+## Deploying
 
-### Docker Deployment
+PWHLCord Stats includes a deployable Dockerfile. See the [React Router Docs](https://reactrouter.com/start/framework/deploying) for more information about deploying.
 
-To build and run using Docker:
+## Contributing
 
-```bash
-docker build -t my-app .
+All contributions to this project are welcome. Contributors are expected to follow the [Code of Conduct](./CODE_OF_CONDUCT.md)
 
-# Run the container
-docker run -p 3000:3000 my-app
-```
+## License
 
-The containerized application can be deployed to any platform that supports Docker, including:
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+## Disclaimers
 
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple
-default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+This project is in no way connected to the Professional Women's Hockey League (PWHL) or any of its respective teams. Names, logos, and other trademarks are he property of their respective owners and used here under the fair use doctrine. If you are the owner of a trademark used on this site and would like it removed, please [contact us](mailto:katie@sleepysheepy.dev). 
