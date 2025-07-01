@@ -1,8 +1,5 @@
-import { ChevronDownIcon, ChevronsUpDown, ChevronUpIcon } from 'lucide-react'
-import { useState } from 'react'
 import { useLoaderData } from 'react-router'
 import { type loader } from './home'
-import { Button } from '~/components/ui/button'
 import {
   Table,
   TableBody,
@@ -11,43 +8,21 @@ import {
   TableHeader,
   TableRow,
 } from '~/components/ui/table'
+import { useSortableTable } from '~/hooks/useSortableTable'
 
 type sortOptions = 'yaps' | 'avg' | 'sum'
 
 export function SummaryTable() {
   const { aggregateData } = useLoaderData<typeof loader>()
 
-  const [sortBy, setSortBy] = useState<sortOptions>('yaps')
-  const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc')
+  const { renderSortButton, sortBy, sortDir } = useSortableTable<sortOptions>({
+    initialSortBy: 'yaps',
+    initialSortDirection: 'desc',
+  })
 
   const sortedData = aggregateData.sort((a, b) => {
     return sortDir === 'asc' ? a[sortBy] - b[sortBy] : b[sortBy] - a[sortBy]
   })
-
-  const renderSortButton = (field: sortOptions) => {
-    let Icon = ChevronsUpDown
-    let onClick
-    if (sortBy === field) {
-      if (sortDir === 'asc') {
-        Icon = ChevronDownIcon
-        onClick = () => setSortDir('desc')
-      } else {
-        Icon = ChevronUpIcon
-        onClick = () => setSortDir('asc')
-      }
-    } else {
-      onClick = () => {
-        setSortBy(field)
-        setSortDir('desc')
-      }
-    }
-
-    return (
-      <Button size={'icon'} onClick={onClick}>
-        <Icon className="size-4" />
-      </Button>
-    )
-  }
 
   return (
     <Table>

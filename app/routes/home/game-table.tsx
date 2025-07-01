@@ -1,9 +1,6 @@
-import { ChevronDownIcon, ChevronsUpDown, ChevronUpIcon } from 'lucide-react'
 import { DateTime } from 'luxon'
-import { useState } from 'react'
 import { useLoaderData } from 'react-router'
 import { type loader } from './home'
-import { Button } from '~/components/ui/button'
 import {
   Table,
   TableBody,
@@ -12,45 +9,23 @@ import {
   TableHeader,
   TableRow,
 } from '~/components/ui/table'
+import { useSortableTable } from '~/hooks/useSortableTable'
 
 type sortOptions = 'gameNumber' | 'messageCount' | 'gameLength'
 
 export function GameTable() {
   const { games } = useLoaderData<typeof loader>()
 
-  const [sortBy, setSortBy] = useState<sortOptions>('gameNumber')
-  const [sortDir, setSortDir] = useState<'asc' | 'desc'>('asc')
+  const { renderSortButton, sortBy, sortDir } = useSortableTable<sortOptions>({
+    initialSortBy: 'gameNumber',
+    initialSortDirection: 'asc',
+  })
 
   const sortedData = games.sort((a, b) => {
     const valueA = a[sortBy] ?? 0
     const valueB = b[sortBy] ?? 0
     return sortDir === 'asc' ? valueA - valueB : valueB - valueA
   })
-
-  const renderSortButton = (field: sortOptions) => {
-    let Icon = ChevronsUpDown
-    let onClick
-    if (sortBy === field) {
-      if (sortDir === 'asc') {
-        Icon = ChevronDownIcon
-        onClick = () => setSortDir('desc')
-      } else {
-        Icon = ChevronUpIcon
-        onClick = () => setSortDir('asc')
-      }
-    } else {
-      onClick = () => {
-        setSortBy(field)
-        setSortDir('desc')
-      }
-    }
-
-    return (
-      <Button size={'icon'} onClick={onClick}>
-        <Icon className="size-4" />
-      </Button>
-    )
-  }
 
   return (
     <Table>
