@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <main className="mx-auto max-w-3xl">
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row items-center justify-between">
         <h1 className="font-serif text-3xl font-semibold sm:text-4xl">PWHLCord Yap Stats</h1>
 
         <label>
