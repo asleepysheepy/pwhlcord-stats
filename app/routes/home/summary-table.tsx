@@ -24,6 +24,16 @@ export function SummaryTable() {
     return sortDir === 'asc' ? a[sortBy] - b[sortBy] : b[sortBy] - a[sortBy]
   })
 
+  if (!aggregateData || aggregateData.length === 0) {
+    return (
+      <div>
+        <p className="text-muted-foreground">
+          Unable to find any game data for the selected season.
+        </p>
+      </div>
+    )
+  }
+
   return (
     <Table>
       <TableHeader className="bg-primary text-primary-foreground">
@@ -34,19 +44,19 @@ export function SummaryTable() {
           <TableHead>
             <div className="flex items-center">
               Average
-              {renderSortButton('avg')}
+              {renderSortButton('avg', 'average messages')}
             </div>
           </TableHead>
           <TableHead>
             <div className="flex items-center">
               Total
-              {renderSortButton('sum')}
+              {renderSortButton('sum', 'total messages')}
             </div>
           </TableHead>
           <TableHead>
             <div className="flex items-center">
               Yaps/60
-              {renderSortButton('yaps')}
+              {renderSortButton('yaps', 'yaps per sixty')}
             </div>
           </TableHead>
         </TableRow>

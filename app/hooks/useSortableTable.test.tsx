@@ -1,7 +1,7 @@
 import { render, renderHook, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { ChevronDownIcon, ChevronsUpDown, ChevronUpIcon } from 'lucide-react'
-import { beforeEach, describe, it, expect, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { useSortableTable } from '~/hooks/useSortableTable'
 
 vi.mock('lucide-react', () => ({
@@ -40,7 +40,7 @@ describe('useSortableTable', () => {
           initialSortBy: 'key2',
         }),
       )
-      render(result.current.renderSortButton('key1'))
+      render(result.current.renderSortButton('key1', 'key1'))
       screen.getByTestId('mock-up-down-icon')
     })
 
@@ -53,8 +53,8 @@ describe('useSortableTable', () => {
         }),
       )
 
-      render(result.current.renderSortButton('key1'))
-      await user.click(screen.getByRole('button'))
+      render(result.current.renderSortButton('key1', 'key1'))
+      await user.click(screen.getByRole('button', { name: 'Sort by key1, descending' }))
 
       expect(result.current.sortBy).toBe('key1')
     })
@@ -66,7 +66,7 @@ describe('useSortableTable', () => {
           initialSortBy: 'key1',
         }),
       )
-      render(result.current.renderSortButton('key1'))
+      render(result.current.renderSortButton('key1', 'key1'))
       screen.getByTestId('mock-down-icon')
     })
 
@@ -79,8 +79,8 @@ describe('useSortableTable', () => {
         }),
       )
 
-      render(result.current.renderSortButton('key1'))
-      await user.click(screen.getByRole('button'))
+      render(result.current.renderSortButton('key1', 'key1'))
+      await user.click(screen.getByRole('button', { name: 'Sort by key1, descending' }))
 
       expect(result.current.sortDir).toBe('desc')
     })
@@ -92,7 +92,7 @@ describe('useSortableTable', () => {
           initialSortBy: 'key1',
         }),
       )
-      render(result.current.renderSortButton('key1'))
+      render(result.current.renderSortButton('key1', `key1`))
       screen.getByTestId('mock-up-icon')
     })
 
@@ -105,8 +105,8 @@ describe('useSortableTable', () => {
         }),
       )
 
-      render(result.current.renderSortButton('key1'))
-      await user.click(screen.getByRole('button'))
+      render(result.current.renderSortButton('key1', 'key1'))
+      await user.click(screen.getByRole('button', { name: 'Sort by key1, ascending' }))
 
       expect(result.current.sortDir).toBe('asc')
     })

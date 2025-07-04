@@ -13,9 +13,10 @@ export function useSortableTable<T>({ initialSortBy, initialSortDirection }: Opt
   const [sortBy, setSortBy] = useState<T>(initialSortBy)
   const [sortDir, setSortDir] = useState<SortDirection>(initialSortDirection)
 
-  const renderSortButton = (field: T) => {
+  const renderSortButton = (field: T, label: string) => {
     let Icon = ChevronsUpDown
-    let onClick
+    let onClick: () => void
+    let buttonLabel = `Sort by ${label}, descending`
 
     if (sortBy === field) {
       if (sortDir === 'asc') {
@@ -24,6 +25,7 @@ export function useSortableTable<T>({ initialSortBy, initialSortDirection }: Opt
       } else {
         Icon = ChevronUpIcon
         onClick = () => setSortDir('asc')
+        buttonLabel = `Sort by ${label}, ascending`
       }
     } else {
       onClick = () => {
@@ -34,6 +36,7 @@ export function useSortableTable<T>({ initialSortBy, initialSortDirection }: Opt
 
     return (
       <Button size={'icon'} onClick={onClick}>
+        <span className="sr-only">{buttonLabel}</span>
         <Icon className="size-4" />
       </Button>
     )

@@ -27,23 +27,35 @@ export function GameTable() {
     return sortDir === 'asc' ? valueA - valueB : valueB - valueA
   })
 
+  if (!games || games.length === 0) {
+    return (
+      <div>
+        <p className="text-muted-foreground">
+          Unable to find any game data for the selected season.
+        </p>
+      </div>
+    )
+  }
+
   return (
     <Table>
       <TableHeader className="bg-primary text-primary-foreground">
         <TableRow>
-          <TableHead className="flex items-center">#{renderSortButton('gameNumber')}</TableHead>
+          <TableHead className="flex items-center">
+            #{renderSortButton('gameNumber', 'game number')}
+          </TableHead>
           <TableHead>Date</TableHead>
           <TableHead>Score</TableHead>
           <TableHead>
             <div className="flex items-center">
               Game Length
-              {renderSortButton('gameLength')}
+              {renderSortButton('gameLength', 'game length')}
             </div>
           </TableHead>
           <TableHead>
             <div className="flex items-center">
               Messages
-              {renderSortButton('messageCount')}
+              {renderSortButton('messageCount', 'message count')}
             </div>
           </TableHead>
         </TableRow>
