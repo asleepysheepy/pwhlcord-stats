@@ -76,7 +76,7 @@ jobs:
         run: npx prisma migrate deploy
 
       - name: debug
-        run: echo $DATABASE_URL
+        run: cat .env
 
       - name: ⚡ Run vitest
         run: npm run test
