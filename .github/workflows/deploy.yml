@@ -75,6 +75,9 @@ jobs:
       - name: Create database
         run: npx prisma migrate deploy
 
+      - name: debug
+        run: echo $DATABASE_URL
+
       - name: ⚡ Run vitest
         run: npm run test
 
