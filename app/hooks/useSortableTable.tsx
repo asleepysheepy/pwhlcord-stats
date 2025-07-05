@@ -1,4 +1,4 @@
-import { ChevronDownIcon, ChevronsUpDown, ChevronUpIcon } from 'lucide-react'
+import { CaretDownIcon, CaretUpIcon, CaretSortIcon } from '@radix-ui/react-icons'
 import { useState } from 'react'
 import { Button } from '~/components/ui/button'
 
@@ -14,16 +14,16 @@ export function useSortableTable<T>({ initialSortBy, initialSortDirection }: Opt
   const [sortDir, setSortDir] = useState<SortDirection>(initialSortDirection)
 
   const renderSortButton = (field: T, label: string) => {
-    let Icon = ChevronsUpDown
+    let Icon = CaretSortIcon
     let onClick: () => void
     let buttonLabel = `Sort by ${label}, descending`
 
     if (sortBy === field) {
       if (sortDir === 'asc') {
-        Icon = ChevronDownIcon
+        Icon = CaretDownIcon
         onClick = () => setSortDir('desc')
       } else {
-        Icon = ChevronUpIcon
+        Icon = CaretUpIcon
         onClick = () => setSortDir('asc')
         buttonLabel = `Sort by ${label}, ascending`
       }

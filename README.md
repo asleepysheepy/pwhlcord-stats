@@ -35,7 +35,7 @@ Please report bugs by opening an [issue](https://github.com/asleepysheepy/pwhlco
 - [React Router](https://reactrouter.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Radix UI](https://www.radix-ui.com/) / [shadcn](https://ui.shadcn.com/)
-- [Lucide Icons](https://lucide.dev/icons/)
+- [Radix UI Icons](https://www.radix-ui.com/icons)
 - [Prisma](https://www.prisma.io/)
 - [Vitest](https://vitest.dev/)
 - [Testing Library](https://testing-library.com/)

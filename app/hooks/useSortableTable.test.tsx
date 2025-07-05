@@ -1,22 +1,22 @@
+import { CaretDownIcon, CaretUpIcon, CaretSortIcon } from '@radix-ui/react-icons'
 import { render, renderHook, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { ChevronDownIcon, ChevronsUpDown, ChevronUpIcon } from 'lucide-react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { useSortableTable } from '~/hooks/useSortableTable'
 
-vi.mock('lucide-react', () => ({
-  ChevronDownIcon: vi.fn(),
-  ChevronsUpDown: vi.fn(),
-  ChevronUpIcon: vi.fn(),
+vi.mock('@radix-ui/react-icons', () => ({
+  CaretDownIcon: vi.fn(),
+  CaretUpIcon: vi.fn(),
+  CaretSortIcon: vi.fn(),
 }))
 
 type mockSortOptions = 'key1' | 'key2'
 
 describe('useSortableTable', () => {
   beforeEach(() => {
-    vi.mocked(ChevronDownIcon).mockImplementation(() => <span data-testid="mock-down-icon" />)
-    vi.mocked(ChevronsUpDown).mockImplementation(() => <span data-testid="mock-up-down-icon" />)
-    vi.mocked(ChevronUpIcon).mockImplementation(() => <span data-testid="mock-up-icon" />)
+    vi.mocked(CaretDownIcon).mockImplementation(() => <span data-testid="mock-down-icon" />)
+    vi.mocked(CaretUpIcon).mockImplementation(() => <span data-testid="mock-up-icon" />)
+    vi.mocked(CaretSortIcon).mockImplementation(() => <span data-testid="mock-sort-icon" />)
   })
 
   it('should return the sort property and direction and render function', () => {
@@ -41,7 +41,7 @@ describe('useSortableTable', () => {
         }),
       )
       render(result.current.renderSortButton('key1', 'key1'))
-      screen.getByTestId('mock-up-down-icon')
+      screen.getByTestId('mock-sort-icon')
     })
 
     it('should set sortBy on click when not the active sort column', async () => {
