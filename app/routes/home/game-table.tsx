@@ -11,7 +11,7 @@ import {
 } from '~/components/ui/table'
 import { useSortableTable } from '~/hooks/useSortableTable'
 
-type sortOptions = 'gameNumber' | 'messageCount' | 'gameLength'
+type sortOptions = 'gameNumber' | 'messageCount' | 'gameLength' | 'yaps'
 
 export function GameTable() {
   const { games } = useLoaderData<typeof loader>()
@@ -58,6 +58,12 @@ export function GameTable() {
               {renderSortButton('messageCount', 'message count')}
             </div>
           </TableHead>
+          <TableHead>
+            <div className="flex items-center">
+              Yaps/60
+              {renderSortButton('yaps', 'yaps per sixty')}
+            </div>
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -84,6 +90,7 @@ export function GameTable() {
             </TableCell>
             <TableCell className="text-center">{game.gameLengthFormatted}</TableCell>
             <TableCell className="text-center">{game.messageCount}</TableCell>
+            <TableCell className="text-center">{game.yaps}</TableCell>
           </TableRow>
         ))}
       </TableBody>

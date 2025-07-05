@@ -113,6 +113,7 @@ export async function loader({ request }: Route.LoaderArgs) {
       gameSummary: `${awayTeam.shortName} ${game.awayTeamScore} - ${game.homeTeamScore} ${homeTeam.shortName}`,
       homeTeam,
       awayTeam,
+      yaps: Math.round(((game.messageCount ?? 0) / game.gameLength) * 3600),
     }
   })
 

@@ -11,12 +11,13 @@ const mockGames = [
     gameType: 'REGULAR SEASON',
     homeTeamScore: 3,
     awayTeamScore: 2,
-    gameLength: 3600,
+    gameLength: 3900,
     messageCount: 1000,
     homeTeamId: 1,
     awayTeamId: 2,
     gameNumber: 1,
-    gameLengthFormatted: '60:00',
+    gameLengthFormatted: '65:00',
+    yaps: 923,
     gameSummary: 'ABC 2 - 3 DEF',
     homeTeam: {
       logo: {
@@ -95,6 +96,10 @@ describe('<GameTable />', () => {
     expect(
       await screen.findByRole('button', { name: 'Sort by message count, descending' }),
     ).toBeInTheDocument()
+    expect(await screen.findByText('Yaps/60')).toBeInTheDocument()
+    expect(
+      await screen.findByRole('button', { name: 'Sort by yaps per sixty, descending' }),
+    ).toBeInTheDocument()
   })
 
   it('should render table data', async () => {
@@ -114,7 +119,8 @@ describe('<GameTable />', () => {
     expect(await screen.findByText('1')).toBeInTheDocument()
     expect(await screen.findByText('Sat, Feb 1, 2025')).toBeInTheDocument()
     expect(await screen.findByText('ABC 2 - 3 DEF')).toBeInTheDocument()
-    expect(await screen.findByText('60:00')).toBeInTheDocument()
+    expect(await screen.findByText('65:00')).toBeInTheDocument()
     expect(await screen.findByText('1000')).toBeInTheDocument()
+    expect(await screen.findByText('923')).toBeInTheDocument()
   })
 })
