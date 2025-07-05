@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 export function Footer() {
   return (
-    <footer className="text-muted-foreground mx-auto my-8 flex max-w-3xl items-center justify-between text-sm">
+    <footer className="text-muted-foreground mx-auto mt-8 flex w-3xl items-center justify-between py-3 text-sm">
       <p>&copy; {new Date().getFullYear()} a_sleepy_sheepy</p>
 
       <div className="flex gap-3">

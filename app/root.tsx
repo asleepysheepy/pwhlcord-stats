@@ -27,9 +27,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto flex h-screen flex-col p-4">
           <div className="h-8" /> {/* Navbar placeholder */}
-          {children}
+          <div className="flex-grow">{children}</div>
           <Footer />
         </div>
         <ScrollRestoration />
