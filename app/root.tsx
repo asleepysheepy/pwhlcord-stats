@@ -2,6 +2,7 @@ import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration }
 
 import type { Route } from './+types/root'
 import './app.css'
+import { Footer } from '~/components/footer'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -29,6 +30,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="container mx-auto p-4">
           <div className="h-8" /> {/* Navbar placeholder */}
           {children}
+          <Footer />
         </div>
         <ScrollRestoration />
         <Scripts />
