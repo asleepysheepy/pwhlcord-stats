@@ -3,12 +3,16 @@ import { createRoutesStub } from 'react-router'
 import { describe, expect, it } from 'vitest'
 import { SummaryTable } from '~/routes/home/summary-table'
 
-const mockAggregateDatum = {
+const mockTeam = {
   id: 1,
   logo: {
     id: 'abc123',
   },
   location: 'Test City',
+}
+
+const mockGameSummary = {
+  teamId: 1,
   count: 2,
   average: 500,
   sum: 100,
@@ -41,7 +45,8 @@ describe('<SummaryTable />', () => {
         Component: SummaryTable,
         HydrateFallback: () => null,
         loader: () => ({
-          aggregateData: [mockAggregateDatum],
+          aggregateData: [mockGameSummary],
+          teams: [mockTeam],
         }),
       },
     ])
@@ -60,7 +65,8 @@ describe('<SummaryTable />', () => {
         Component: SummaryTable,
         HydrateFallback: () => null,
         loader: () => ({
-          aggregateData: [mockAggregateDatum],
+          aggregateData: [mockGameSummary],
+          teams: [mockTeam],
         }),
       },
     ])
@@ -88,7 +94,8 @@ describe('<SummaryTable />', () => {
         Component: SummaryTable,
         HydrateFallback: () => null,
         loader: () => ({
-          aggregateData: [mockAggregateDatum],
+          aggregateData: [mockGameSummary],
+          teams: [mockTeam],
         }),
       },
     ])

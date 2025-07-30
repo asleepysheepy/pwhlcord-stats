@@ -9,11 +9,12 @@ import {
   TableRow,
 } from '~/components/ui/table'
 import { useSortableTable } from '~/hooks/useSortableTable'
+import { type GameSummary } from '~/types'
 
 type sortOptions = 'yaps' | 'avg' | 'sum'
 
 export function SummaryTable() {
-  const { aggregateData } = useLoaderData<typeof loader>()
+  const { aggregateData, teams } = useLoaderData<typeof loader>()
 
   const { renderSortButton, sortBy, sortDir } = useSortableTable<sortOptions>({
     initialSortBy: 'yaps',
@@ -31,6 +32,28 @@ export function SummaryTable() {
           Unable to find any game data for the selected season.
         </p>
       </div>
+    )
+  }
+
+  const renderTableRow = (summary: GameSummary, index: number) => {
+    const team = teams.find((t) => t.id === summary.teamId)!
+
+    return (
+      <TableRow key={index}>
+        <TableCell className="text-center">{index + 1}</TableCell>
+        <TableCell className="font-medium">
+          <img
+            className="mr-2 inline-block size-6"
+            src={`/resources/team-logo/${team.logo.id}`}
+            alt={team.logo.altText ?? ''}
+          />
+          {team.location}
+        </TableCell>
+        <TableCell>{summary.count}</TableCell>
+        <TableCell>{summary.avg}</TableCell>
+        <TableCell>{summary.sum}</TableCell>
+        <TableCell>{summary.yaps}</TableCell>
+      </TableRow>
     )
   }
 
@@ -61,25 +84,7 @@ export function SummaryTable() {
           </TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody>
-        {sortedData.map((team, index) => (
-          <TableRow key={team.id}>
-            <TableCell className="text-center">{index + 1}</TableCell>
-            <TableCell className="font-medium">
-              <img
-                className="mr-2 inline-block size-6"
-                src={`/resources/team-logo/${team.logo.id}`}
-                alt={team.logo.altText ?? ''}
-              />
-              {team.location}
-            </TableCell>
-            <TableCell>{team.count}</TableCell>
-            <TableCell>{team.avg}</TableCell>
-            <TableCell>{team.sum}</TableCell>
-            <TableCell>{team.yaps}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
+      <TableBody>{sortedData.map((summary, index) => renderTableRow(summary, index))}</TableBody>
     </Table>
   )
 }

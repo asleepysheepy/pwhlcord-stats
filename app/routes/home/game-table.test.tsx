@@ -18,16 +18,21 @@ const mockGames = [
     gameNumber: 1,
     gameLengthFormatted: '65:00',
     yaps: 923,
-    gameSummary: 'ABC 2 - 3 DEF',
-    homeTeam: {
-      logo: {
-        id: 'abc123',
-      },
+    scoreline: 'ABC 2 - 3 DEF',
+  },
+]
+
+const mockTeams = [
+  {
+    id: 1,
+    logo: {
+      id: 'abc123',
     },
-    awayTeam: {
-      logo: {
-        id: 'def456',
-      },
+  },
+  {
+    id: 2,
+    logo: {
+      id: 'def456',
     },
   },
 ]
@@ -41,6 +46,7 @@ describe('<GameTable />', () => {
         HydrateFallback: () => null,
         loader: () => ({
           games: [],
+          teams: mockTeams,
         }),
       },
     ])
@@ -60,6 +66,7 @@ describe('<GameTable />', () => {
         HydrateFallback: () => null,
         loader: () => ({
           games: mockGames,
+          teams: mockTeams,
         }),
       },
     ])
@@ -78,6 +85,7 @@ describe('<GameTable />', () => {
         HydrateFallback: () => null,
         loader: () => ({
           games: mockGames,
+          teams: mockTeams,
         }),
       },
     ])
@@ -110,6 +118,7 @@ describe('<GameTable />', () => {
         HydrateFallback: () => null,
         loader: () => ({
           games: mockGames,
+          teams: mockTeams,
         }),
       },
     ])

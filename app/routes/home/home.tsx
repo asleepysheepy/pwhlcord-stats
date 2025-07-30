@@ -9,7 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '~/components/ui/select'
-import { prisma } from '~/lib/db.server'
+import { fetchGamesByTeam, fetchGameSummariesByTeam } from '~/lib/game.server'
+import { fetchTeamsWithLogo } from '~/lib/team.server'
 
 const CURRENT_SEASON = '20242025'
 
@@ -45,7 +46,6 @@ export default function Home() {
 
       <section className="mt-6">
         <h2 className="mb-3 font-serif text-xl font-semibold sm:text-2xl">Summary</h2>
-
         <SummaryTable />
       </section>
       <section className="mt-12">
@@ -60,62 +60,9 @@ export async function loader({ request }: Route.LoaderArgs) {
   const searchParams = new URL(request.url).searchParams
   const season = searchParams.get('season') ?? CURRENT_SEASON
 
-  const teams = (
-    await prisma.team.findMany({
-      include: {
-        teamLogos: { select: { id: true, current: true, altText: true }, where: { current: true } },
-      },
-      orderBy: { location: 'asc' },
-    })
-  ).map(({ teamLogos, ...team }) => ({ ...team, logo: teamLogos[0] }))
-
-  const aggregateData = (
-    await Promise.all(
-      teams.map(async (team) => {
-        const data = await prisma.game.aggregate({
-          _avg: { messageCount: true },
-          _sum: { messageCount: true, gameLength: true },
-          _count: { messageCount: true },
-          where: { OR: [{ awayTeamId: team.id }, { homeTeamId: team.id }], season },
-        })
-
-        const sum = data._sum.messageCount ?? 0
-        const totalGameLength = data._sum.gameLength ?? 0
-
-        return {
-          ...team,
-          avg: Math.round(data._avg.messageCount ?? 0),
-          count: data._count.messageCount ?? 0,
-          totalGameLength,
-          sum,
-          yaps: Math.round((sum / totalGameLength) * 3600),
-        }
-      }),
-    )
-  ).filter((a) => a.count !== 0)
-
-  const games = (
-    await prisma.game.findMany({
-      where: { season },
-      orderBy: { gameDate: 'asc' },
-    })
-  ).map((game, index) => {
-    const homeTeam = teams.find((t) => game.homeTeamId === t.id)!
-    const awayTeam = teams.find((t) => game.awayTeamId === t.id)!
-
-    const minutes = Math.floor(game.gameLength / 60)
-    const seconds = `${game.gameLength % 60}`.padStart(2, '0')
-
-    return {
-      ...game,
-      gameNumber: index + 1,
-      gameLengthFormatted: `${minutes}:${seconds}`,
-      gameSummary: `${awayTeam.shortName} ${game.awayTeamScore} - ${game.homeTeamScore} ${homeTeam.shortName}`,
-      homeTeam,
-      awayTeam,
-      yaps: Math.round(((game.messageCount ?? 0) / game.gameLength) * 3600),
-    }
-  })
+  const teams = await fetchTeamsWithLogo()
+  const aggregateData = await fetchGameSummariesByTeam(teams, season)
+  const games = await fetchGamesByTeam(season)
 
   return { teams, games, aggregateData }
 }

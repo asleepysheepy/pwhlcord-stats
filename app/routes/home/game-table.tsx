@@ -10,11 +10,12 @@ import {
   TableRow,
 } from '~/components/ui/table'
 import { useSortableTable } from '~/hooks/useSortableTable'
+import { type Game } from '~/types'
 
 type sortOptions = 'gameNumber' | 'messageCount' | 'gameLength' | 'yaps'
 
 export function GameTable() {
-  const { games } = useLoaderData<typeof loader>()
+  const { games, teams } = useLoaderData<typeof loader>()
 
   const { renderSortButton, sortBy, sortDir } = useSortableTable<sortOptions>({
     initialSortBy: 'gameNumber',
@@ -34,6 +35,38 @@ export function GameTable() {
           Unable to find any game data for the selected season.
         </p>
       </div>
+    )
+  }
+
+  const renderTableRow = (game: Game) => {
+    const awayTeam = teams.find((team) => team.id === game.awayTeamId)!
+    const homeTeam = teams.find((team) => team.id === game.homeTeamId)!
+
+    return (
+      <TableRow key={game.id}>
+        <TableCell className="text-center">{game.gameNumber}</TableCell>
+        <TableCell>
+          {DateTime.fromJSDate(game.gameDate)
+            .setLocale('en-CA')
+            .toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}
+        </TableCell>
+        <TableCell className="flex flex-row gap-2 font-medium">
+          <img
+            className="hidden size-5 sm:block"
+            src={`/resources/team-logo/${awayTeam.logo.id}`}
+            alt={awayTeam.logo.altText ?? ''}
+          />
+          <span>{game.scoreline}</span>
+          <img
+            className="hidden size-5 sm:block"
+            src={`/resources/team-logo/${homeTeam.logo.id}`}
+            alt={homeTeam.logo.altText ?? ''}
+          />
+        </TableCell>
+        <TableCell className="text-center">{game.gameLengthFormatted}</TableCell>
+        <TableCell className="text-center">{game.messageCount}</TableCell>
+        <TableCell className="text-center">{game.yaps}</TableCell>
+      </TableRow>
     )
   }
 
@@ -66,34 +99,7 @@ export function GameTable() {
           </TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody>
-        {sortedData.map((game) => (
-          <TableRow key={game.id}>
-            <TableCell className="text-center">{game.gameNumber}</TableCell>
-            <TableCell>
-              {DateTime.fromJSDate(game.gameDate)
-                .setLocale('en-CA')
-                .toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}
-            </TableCell>
-            <TableCell className="flex flex-row gap-2 font-medium">
-              <img
-                className="hidden size-5 sm:block"
-                src={`/resources/team-logo/${game.awayTeam.logo.id}`}
-                alt={game.awayTeam.logo.altText ?? ''}
-              />
-              <span>{game.gameSummary}</span>
-              <img
-                className="hidden size-5 sm:block"
-                src={`/resources/team-logo/${game.homeTeam.logo.id}`}
-                alt={game.homeTeam.logo.altText ?? ''}
-              />
-            </TableCell>
-            <TableCell className="text-center">{game.gameLengthFormatted}</TableCell>
-            <TableCell className="text-center">{game.messageCount}</TableCell>
-            <TableCell className="text-center">{game.yaps}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
+      <TableBody>{sortedData.map((game) => renderTableRow(game))}</TableBody>
     </Table>
   )
 }
