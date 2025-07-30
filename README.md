@@ -6,11 +6,11 @@ A site for tracking meta stats from the unofficial PWHL Discord server
 
 - [Bug Reports](#bug-reports)
 - [Developing](#developing)
-    - [Requirements](#requirements)
-    - [Dependencies and Frameworks](#dependencies-and-frameworks)
-    - [Setup and Running](#setup-and-running)
-    - [Useful Scripts](#useful-scripts)
-    - [Additional Commands](#additional-commands)
+  - [Requirements](#requirements)
+  - [Dependencies and Frameworks](#dependencies-and-frameworks)
+  - [Setup and Running](#setup-and-running)
+  - [Useful Scripts](#useful-scripts)
+  - [Additional Commands](#additional-commands)
 - [Deploying](#deploying)
 - [Contributing](#contributing)
 - [License](#license)
@@ -18,7 +18,8 @@ A site for tracking meta stats from the unofficial PWHL Discord server
 
 ## Bug Reports
 
-Please report bugs by opening an [issue](https://github.com/asleepysheepy/pwhlcord-stats/issues/new) on GitHub.
+Please report bugs by opening an [issue](https://github.com/asleepysheepy/pwhlcord-stats/issues/new)
+on GitHub.
 
 ## Developing
 
@@ -26,7 +27,8 @@ Please report bugs by opening an [issue](https://github.com/asleepysheepy/pwhlco
 
 - [NodeJS](https://nodejs.org/)
 - [PostgreSQL](https://www.postgresql.org/)
-  - Can be installed locally, through docker/docker-compose, or through a service like [Neon](https://neon.com/)
+  - Can be installed locally, through docker/docker-compose, or through a service like
+    [Neon](https://neon.com/)
 
 ### Dependencies and Frameworks
 
@@ -76,13 +78,16 @@ npm run dev
 
 ### Useful Scripts
 
-- `build` - Gets the app ready for production. Generates the Prisma client, migrates the database, and creates a production build of the app
+- `build` - Gets the app ready for production. Generates the Prisma client, migrates the database,
+  and creates a production build of the app
 - `dev` - Runs the app in development mode
 - `format` - Uses Prettier to format the codebase
-- `lint` - Uses ESLint to lint the codebase, can be run with the `--fix` option to automatically fix many issues
+- `lint` - Uses ESLint to lint the codebase, can be run with the `--fix` option to automatically fix
+  many issues
 - `start` - Starts the production build of the app
 - `test` - Runs the test suite
-- `test:watch` - Runs the test suite in "watch" mode, automatically rerunning the suite when code changes are saved
+- `test:watch` - Runs the test suite in "watch" mode, automatically rerunning the suite when code
+  changes are saved
 - `typecheck` - Checks the type safety of the codebase using typescript
 - `validate` - Shortcut to run `typecheck`, `lint`, and `test` together
 
@@ -94,11 +99,14 @@ npm run dev
 
 ## Deploying
 
-PWHLCord Stats includes a deployable Dockerfile. See the [React Router Docs](https://reactrouter.com/start/framework/deploying) for more information about deploying.
+PWHLCord Stats includes a deployable Dockerfile. See the
+[React Router Docs](https://reactrouter.com/start/framework/deploying) for more information about
+deploying.
 
 ## Contributing
 
-All contributions to this project are welcome. Contributors are expected to follow the [Code of Conduct](./CODE_OF_CONDUCT.md)
+All contributions to this project are welcome. Contributors are expected to follow the
+[Code of Conduct](./CODE_OF_CONDUCT.md)
 
 ## License
 
@@ -106,4 +114,7 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## Disclaimers
 
-This project is in no way connected to the Professional Women's Hockey League (PWHL) or any of its respective teams. Names, logos, and other trademarks are he property of their respective owners and used here under the fair use doctrine. If you are the owner of a trademark used on this site and would like it removed, please [contact us](mailto:katie@sleepysheepy.dev). 
+This project is in no way connected to the Professional Women's Hockey League (PWHL) or any of its
+respective teams. Names, logos, and other trademarks are he property of their respective owners and
+used here under the fair use doctrine. If you are the owner of a trademark used on this site and
+would like it removed, please [contact us](mailto:katie@sleepysheepy.dev).
