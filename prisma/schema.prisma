@@ -46,13 +46,14 @@ model TeamLogo {
 model Game {
   id Int @id @default(autoincrement())
 
-  gameDate      DateTime
-  season        String
-  gameType      String
-  homeTeamScore Int
-  awayTeamScore Int
-  gameLength    Int
-  messageCount  Int?
+  gameDate       DateTime
+  season         String
+  gameType       String
+  homeTeamScore  Int
+  awayTeamScore  Int
+  gameLength     Int
+  messageCount   Int?
+  isTakeoverTour Boolean  @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
