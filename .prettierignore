@@ -1,0 +1,10 @@
+.idea
+.github
+.vscode
+
+node_modules
+.next
+package-lock.json
+
+/build
+.env
