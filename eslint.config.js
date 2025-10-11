@@ -4,7 +4,7 @@ import { includeIgnoreFile } from '@eslint/compat'
 import { FlatCompat } from '@eslint/eslintrc'
 import storybook from 'eslint-plugin-storybook'
 
-const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url))
+const gitignorePath = fileURLToPath(new URL('.gitignore', import.meta.url))
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -20,22 +20,15 @@ const eslintConfig = [
   {
     rules: {
       'import/order': [
-          'warn',
+        'warn',
         {
           alphabetize: { order: 'asc', caseInsensitive: true },
           pathGroups: [{ pattern: '#*/**', group: 'internal' }],
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-          ],
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
         },
-      ]
-    }
-  }
+      ],
+    },
+  },
 ]
 
 export default eslintConfig

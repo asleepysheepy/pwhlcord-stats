@@ -1,0 +1,190 @@
+{
+  "id": "757eb70e-a254-417a-b834-aa4a71cc1a14",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.team": {
+      "name": "team",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "location": {
+          "name": "location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "shortName": {
+          "name": "shortName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.game": {
+      "name": "game",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "gameDate": {
+          "name": "gameDate",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "season": {
+          "name": "season",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "gameType": {
+          "name": "gameType",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "homeTeamScore": {
+          "name": "homeTeamScore",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "awayTeamScore": {
+          "name": "awayTeamScore",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gameLength": {
+          "name": "gameLength",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "messageCount": {
+          "name": "messageCount",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isTakeoverTour": {
+          "name": "isTakeoverTour",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "homeTeamId": {
+          "name": "homeTeamId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "awayTeamId": {
+          "name": "awayTeamId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "game_homeTeamId_team_id_fk": {
+          "name": "game_homeTeamId_team_id_fk",
+          "tableFrom": "game",
+          "tableTo": "team",
+          "columnsFrom": [
+            "homeTeamId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "cascade"
+        },
+        "game_awayTeamId_team_id_fk": {
+          "name": "game_awayTeamId_team_id_fk",
+          "tableFrom": "game",
+          "tableTo": "team",
+          "columnsFrom": [
+            "awayTeamId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
