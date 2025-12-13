@@ -17,10 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${figtree.variable} ${geistMono.variable} antialiased`}>
-      <body className="dark">
+      <body className="">
         <div className="container mx-auto flex h-screen flex-col p-4">
           <div className="h-8" /> {/* Navbar placeholder */}
-          <div className="flex-grow">{children}</div>
+          <div className="grow">{children}</div>
           {/*<Footer />*/}
         </div>
       </body>
