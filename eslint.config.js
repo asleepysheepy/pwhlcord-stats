@@ -1,20 +1,14 @@
-import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { includeIgnoreFile } from '@eslint/compat'
-import { FlatCompat } from '@eslint/eslintrc'
 import storybook from 'eslint-plugin-storybook'
+import nextConfig from 'eslint-config-next/core-web-vitals'
+import nextTypescript from 'eslint-config-next/typescript'
 
 const gitignorePath = fileURLToPath(new URL('.gitignore', import.meta.url))
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-})
-
 const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  ...nextConfig,
+  ...nextTypescript,
   ...storybook.configs['flat/recommended'],
   includeIgnoreFile(gitignorePath),
   {
