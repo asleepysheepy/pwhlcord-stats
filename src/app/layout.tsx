@@ -1,16 +1,9 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
+import { Figtree, Geist_Mono } from 'next/font/google'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
+const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' })
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
 export const metadata: Metadata = {
   title: 'PWHLCord Stats',
@@ -23,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" className={`${figtree.variable} ${geistMono.variable} antialiased`}>
+      <body className="dark">
         <div className="container mx-auto flex h-screen flex-col p-4">
           <div className="h-8" /> {/* Navbar placeholder */}
           <div className="flex-grow">{children}</div>

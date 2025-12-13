@@ -146,12 +146,8 @@
           "name": "game_homeTeamId_team_id_fk",
           "tableFrom": "game",
           "tableTo": "team",
-          "columnsFrom": [
-            "homeTeamId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["homeTeamId"],
+          "columnsTo": ["id"],
           "onDelete": "restrict",
           "onUpdate": "cascade"
         },
@@ -159,12 +155,8 @@
           "name": "game_awayTeamId_team_id_fk",
           "tableFrom": "game",
           "tableTo": "team",
-          "columnsFrom": [
-            "awayTeamId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["awayTeamId"],
+          "columnsTo": ["id"],
           "onDelete": "restrict",
           "onUpdate": "cascade"
         }

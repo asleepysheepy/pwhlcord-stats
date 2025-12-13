@@ -1,5 +1,5 @@
-import Image from 'next/image'
+import { ComponentExample } from '@/components/component-example'
 
-export default function Home() {
-  return <main />
+export default function Page() {
+  return <ComponentExample />
 }

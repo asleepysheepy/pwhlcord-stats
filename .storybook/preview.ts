@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/nextjs'
+// import { withThemeByClassName } from '@storybook/addon-themes'
 import '@/app/globals.css'
 
 const preview: Preview = {
@@ -10,6 +11,16 @@ const preview: Preview = {
       },
     },
   },
+  // decorators: [
+  //   withThemeByClassName({
+  //     themes: {
+  //       // nameOfTheme: 'classNameForTheme',
+  //       light: '',
+  //       dark: 'dark',
+  //     },
+  //     defaultTheme: 'light',
+  //   }),
+  // ],
 }
 
 export default preview
