@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { Figtree, Geist_Mono } from 'next/font/google'
+import { ThemeProvider } from 'next-themes'
 import { Footer } from '@/components/footer'
 import { Navbar } from '@/components/navbar'
 
@@ -18,13 +19,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${figtree.variable} ${geistMono.variable} antialiased`}>
-      <body className="">
-        <div className="container mx-auto flex h-screen max-w-6xl flex-col justify-between px-4">
-          <Navbar />
-          <div className="my-8 grow">{children}</div>
-          <Footer />
-        </div>
+    <html lang="en" className={`${figtree.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class">
+          <div className="container mx-auto flex h-screen max-w-6xl flex-col justify-between px-4">
+            <Navbar />
+            <div className="my-8 grow">{children}</div>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )
