@@ -1,8 +1,11 @@
 import { type Metadata } from 'next'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { LoginForm } from './_components/login-form'
+import { verifyNoSession } from '@/lib/auth'
+import { LoginForm } from './components/login-form'
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  await verifyNoSession()
+
   return (
     <Card className="mx-auto max-w-sm">
       <CardTitle>
