@@ -40,8 +40,8 @@ export function Navbar() {
         <Link href="/" className="flex flex-row items-end gap-2">
           <HugeiconsIcon icon={WaterfallUp01Icon} className="text-primary size-10" />
           <div className="group grid leading-snug">
-            <span className="text-muted-foreground font-light transition">PWHLCord</span>
-            <span className="text-foreground font-medium transition">Stats</span>
+            <span className="text-muted-foreground font-light">PWHLCord</span>
+            <span className="text-foreground font-medium">Stats</span>
           </div>
         </Link>
 
