@@ -1,12 +1,14 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { Figtree, Geist_Mono } from 'next/font/google'
+import { Footer } from '@/components/footer'
+import { Navbar } from '@/components/navbar'
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
 export const metadata: Metadata = {
-  title: 'PWHLCord Stats',
+  title: { default: 'PWHLCord Stats', template: '%s | PWHLCord Stats' },
   description: 'Meta Stats for the unofficial PWHL Discord',
 }
 
@@ -18,10 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${figtree.variable} ${geistMono.variable} antialiased`}>
       <body className="">
-        <div className="container mx-auto flex h-screen flex-col p-4">
-          <div className="h-8" /> {/* Navbar placeholder */}
-          <div className="grow">{children}</div>
-          {/*<Footer />*/}
+        <div className="container mx-auto flex h-screen max-w-6xl flex-col justify-between px-4">
+          <Navbar />
+          <div className="my-8 grow">{children}</div>
+          <Footer />
         </div>
       </body>
     </html>
