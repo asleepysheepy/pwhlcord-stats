@@ -1,3 +1,4 @@
-export * from './team'
-export * from './game'
+export * from './arena'
 export * from './auth'
+export * from './game'
+export * from './team'
