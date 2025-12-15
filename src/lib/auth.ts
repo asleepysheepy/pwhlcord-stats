@@ -45,3 +45,11 @@ export async function verifyNoSession(redirectUrl = '/') {
     redirect(redirectUrl)
   }
 }
+
+export async function getCurrentUser() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  })
+
+  return session?.user
+}

@@ -35,7 +35,7 @@ export function LoginForm() {
 
   async function handleLogin(data: LoginFormType) {
     await authClient.signIn.email(data, {
-      onError: ({ error }) => form.setError('root', error),
+      onError: ({ error }) => form.setError('root.serverError', error),
       onSuccess: () => {
         router.push('/')
       },
@@ -93,7 +93,9 @@ export function LoginForm() {
         />
       </FieldGroup>
 
-      {!form.formState.isValid && <FieldError errors={[form.formState.errors.root]} className="mt-6" />}
+      {form.formState.errors.root?.serverError && (
+        <FieldError errors={[form.formState.errors.root?.serverError]} className="mt-6" />
+      )}
 
       <Button type="submit" size="default" className="mt-8" disabled={form.formState.isSubmitting}>
         <LoadingSwap isLoading={form.formState.isSubmitting}>Log In</LoadingSwap>

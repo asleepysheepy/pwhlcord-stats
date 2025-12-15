@@ -24,7 +24,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class">
           <div className="container mx-auto flex h-screen max-w-6xl flex-col justify-between px-4">
             <Navbar />
-            <div className="my-8 grow">{children}</div>
+            <main className="my-8 grow">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>
