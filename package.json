@@ -44,7 +44,7 @@
     "drizzle-kit": "^0.31.8",
     "eslint": "^9",
     "eslint-config-next": "16.0.10",
-    "eslint-plugin-storybook": "^10.1.8",
+    "eslint-plugin-storybook": "^10.1.10",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "storybook": "^10.1.8",
