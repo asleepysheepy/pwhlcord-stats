@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@eslint/compat": "^2.0.0",
-    "@storybook/addon-themes": "^10.1.8",
+    "@storybook/addon-themes": "^10.1.10",
     "@storybook/nextjs-vite": "10.1.8",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^25",
