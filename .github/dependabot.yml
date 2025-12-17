@@ -5,3 +5,14 @@ updates:
     schedule:
       interval: 'weekly'
     open-pull-requests-limit: 50
+    groups:
+      storybook:
+        applies-to: version-updates
+        patterns:
+          - '@storybook/*'
+          - 'storybook'
+          - 'eslint-plugin-storybook'
+        update-types:
+          - 'major'
+          - 'minor'
+          - 'patch'
