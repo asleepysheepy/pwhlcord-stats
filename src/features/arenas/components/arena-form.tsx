@@ -1,6 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Controller, useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -9,6 +10,7 @@ import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field
 import { Input } from '@/components/ui/input'
 import { LoadingSwap } from '@/components/ui/loading-swap'
 import { arenaSchema } from '@/features/arenas/schema'
+import { urlArenas } from '@/lib/urls'
 import { createArena, updateArena } from '../actions'
 
 type Props = {
@@ -42,7 +44,7 @@ export function ArenaForm({ arena }: Props) {
     if (error) {
       form.setError('root.serverError', { message })
     } else {
-      router.push('/arenas')
+      router.push(urlArenas())
     }
   }
 
@@ -103,7 +105,7 @@ export function ArenaForm({ arena }: Props) {
           <LoadingSwap isLoading={form.formState.isSubmitting}>{isUpdating ? 'Update' : 'Create'} Arena</LoadingSwap>
         </Button>
 
-        <Button variant="outline" render={<a href="/arenas" />} nativeButton={false}>
+        <Button variant="outline" render={<Link href={urlArenas()} />} nativeButton={false}>
           Cancel
         </Button>
       </div>

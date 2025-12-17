@@ -2,10 +2,11 @@ import { type Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { ArenaForm } from '@/features/arenas/components/arena-form'
 import { canCreateArena } from '@/features/arenas/permissions'
+import { urlLogin } from '@/lib/urls'
 
 export default async function NewArenaPage() {
   if (!(await canCreateArena())) {
-    redirect('/login')
+    redirect(urlLogin())
   }
 
   return (

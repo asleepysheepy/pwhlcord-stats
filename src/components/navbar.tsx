@@ -3,7 +3,7 @@
 import {
   ComputerIcon,
   LogoutIcon,
-  MoonIcon,
+  Moon02Icon,
   PaintBoardIcon,
   Settings01Icon,
   SunIcon,
@@ -15,6 +15,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { authClient } from '@/lib/auth-client'
+import { urlArenas, urlHome, urlLogin } from '@/lib/urls'
 import { Button } from './ui/button'
 import {
   DropdownMenu,
@@ -37,7 +38,7 @@ export function Navbar() {
   return (
     <header className="py-6">
       <nav className="flex w-full flex-wrap items-center justify-between gap-4 sm:flex-nowrap md:gap-8">
-        <Link href="/" className="flex flex-row items-end gap-2">
+        <Link href={urlHome()} className="flex flex-row items-end gap-2">
           <HugeiconsIcon icon={WaterfallUp01Icon} className="text-primary size-10" />
           <div className="group grid leading-snug">
             <span className="text-muted-foreground font-light">PWHLCord</span>
@@ -45,13 +46,27 @@ export function Navbar() {
           </div>
         </Link>
 
-        <DropdownMenu>
-          <DropdownMenuTrigger render={<Button variant="ghost" size="icon" />}>
-            <HugeiconsIcon icon={session ? UserIcon : Settings01Icon} className="size-6" />
-            <span className="sr-only">{session ? 'Account menu' : 'Site Settings'}</span>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>{session ? <UserDropdown /> : <AnonymousDropdown />}</DropdownMenuContent>
-        </DropdownMenu>
+        <div className="flex items-center gap-4">
+          <Link className="hover:text-primary-foreground dark:hover:text-primary text-xl hover:underline" href="#">
+            Games
+          </Link>
+          <Link className="hover:text-primary-foreground dark:hover:text-primary text-xl hover:underline" href="#">
+            Teams
+          </Link>
+          <Link
+            className="hover:text-primary-foreground dark:hover:text-primary text-xl hover:underline"
+            href={urlArenas()}
+          >
+            Arenas
+          </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger render={<Button variant="ghost" size="icon" />}>
+              <HugeiconsIcon icon={session ? UserIcon : Settings01Icon} className="size-6" />
+              <span className="sr-only">{session ? 'Account menu' : 'Site Settings'}</span>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>{session ? <UserDropdown /> : <AnonymousDropdown />}</DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </nav>
     </header>
   )
@@ -65,7 +80,7 @@ function UserDropdown() {
     authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          router.push('/login')
+          router.push(urlLogin())
         },
       },
     })
@@ -110,7 +125,7 @@ function ThemePicker() {
                 Light
               </DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="dark">
-                <HugeiconsIcon icon={MoonIcon} strokeWidth={2} />
+                <HugeiconsIcon icon={Moon02Icon} strokeWidth={2} />
                 Dark
               </DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="system">

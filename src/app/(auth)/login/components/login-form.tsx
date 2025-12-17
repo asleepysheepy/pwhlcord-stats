@@ -12,6 +12,7 @@ import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field
 import { Input } from '@/components/ui/input'
 import { LoadingSwap } from '@/components/ui/loading-swap'
 import { authClient } from '@/lib/auth-client'
+import { urlHome } from '@/lib/urls'
 
 const loginFormSchema = z.object({
   email: z.email().toLowerCase(),
@@ -37,7 +38,7 @@ export function LoginForm() {
     await authClient.signIn.email(data, {
       onError: ({ error }) => form.setError('root.serverError', error),
       onSuccess: () => {
-        router.push('/')
+        router.push(urlHome())
       },
     })
   }

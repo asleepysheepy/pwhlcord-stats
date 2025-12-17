@@ -6,6 +6,7 @@ import { nextCookies } from 'better-auth/next-js'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { db } from '@/db'
+import { urlLogin } from '@/lib/urls'
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
@@ -32,7 +33,7 @@ export async function verifySession() {
   })
 
   if (session == null) {
-    redirect('/login')
+    redirect(urlLogin())
   }
 }
 

@@ -1,8 +1,12 @@
 'use server'
 
 import { z } from 'zod'
-import { createArena as createArenaDb, updateArena as updateArenaDb } from '@/features/arenas/db'
-import { canCreateArena, canUpdateArena } from '@/features/arenas/permissions'
+import {
+  createArena as createArenaDb,
+  deleteArena as deleteArenaDb,
+  updateArena as updateArenaDb,
+} from '@/features/arenas/db'
+import { canCreateArena, canDeleteArena, canUpdateArena } from '@/features/arenas/permissions'
 import { arenaSchema } from '@/features/arenas/schema'
 
 /**
@@ -40,5 +44,14 @@ export async function updateArena(id: number, unsafeData: z.infer<typeof arenaSc
   }
 
   const arena = await updateArenaDb(id, data)
+  return { error: false, message: `Successfully updated the arena, ${arena.name}` }
+}
+
+export async function deleteArena(id: number) {
+  if (!(await canDeleteArena())) {
+    return { error: true, message: 'There was an error deleting this arena' }
+  }
+
+  const arena = await deleteArenaDb(id)
   return { error: false, message: `Successfully updated the arena, ${arena.name}` }
 }

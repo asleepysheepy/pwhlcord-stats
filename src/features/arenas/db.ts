@@ -3,6 +3,7 @@ import 'server-only'
 import { eq } from 'drizzle-orm'
 import { db } from '@/db'
 import { ArenaTable } from '@/db/schema'
+import { updateArenaCache } from './cache'
 
 /**
  * Attempts to insert a new arena into the database
@@ -16,6 +17,8 @@ export async function createArena(data: typeof ArenaTable.$inferInsert) {
   if (arena == null) {
     throw new Error('Failed to create arena')
   }
+
+  updateArenaCache(arena.id)
 
   return arena
 }
@@ -31,8 +34,22 @@ export async function updateArena(id: number, data: typeof ArenaTable.$inferInse
   const [updatedArena] = await db.update(ArenaTable).set(data).where(eq(ArenaTable.id, id)).returning()
 
   if (updatedArena == null) {
-    throw new Error('failed to update arena')
+    throw new Error('Failed to update arena')
   }
 
+  updateArenaCache(updatedArena.id)
+
   return updatedArena
+}
+
+export async function deleteArena(id: number) {
+  const [deletedArena] = await db.delete(ArenaTable).where(eq(ArenaTable.id, id)).returning()
+
+  if (deletedArena == null) {
+    throw new Error('Failed to delete arena')
+  }
+
+  updateArenaCache(deletedArena.id)
+
+  return deletedArena
 }
