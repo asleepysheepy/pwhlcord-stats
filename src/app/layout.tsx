@@ -4,6 +4,7 @@ import { Figtree, Geist_Mono } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import { Footer } from '@/components/footer'
 import { Navbar } from '@/components/navbar'
+import { Toaster } from '@/components/ui/sonner'
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' })
@@ -27,6 +28,7 @@ export default function RootLayout({
             <main className="my-8 grow">{children}</main>
             <Footer />
           </div>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
