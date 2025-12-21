@@ -1,0 +1,172 @@
+[
+  {
+    "name": "3M Arena",
+    "maxCapacity": 10257,
+    "location": "Minneapolis, MN"
+  },
+  {
+    "name": "Agganis Arena",
+    "maxCapacity": 6150,
+    "location": "Boston, MA"
+  },
+  {
+    "name": "Allstate Arena",
+    "maxCapacity": 16692,
+    "location": "Rosemont, IL"
+  },
+  {
+    "name": "American Airlines Center",
+    "maxCapacity": 18532,
+    "location": "Dallas, TX"
+  },
+  {
+    "name": "Ball Arena",
+    "maxCapacity": 18007,
+    "location": "Denver, CO"
+  },
+  {
+    "name": "Bell Centre",
+    "maxCapacity": 21105,
+    "location": "Montréal, QC"
+  },
+  {
+    "name": "Canada Life Centre",
+    "maxCapacity": 15225,
+    "location": "Winnipeg, MB"
+  },
+  {
+    "name": "Canadian Tire Centre",
+    "maxCapacity": 18655,
+    "location": "Ottawa, ON"
+  },
+  {
+    "name": "Capital One Arena",
+    "maxCapacity": 18573,
+    "location": "Washington, DC"
+  },
+  {
+    "name": "Climate Pledge Arena",
+    "maxCapacity": 17151,
+    "location": "Seattle, WA"
+  },
+  {
+    "name": "Coca-Cola Coliseum",
+    "maxCapacity": 8140,
+    "location": "Toronto, ON"
+  },
+  {
+    "name": "Enterprise Center",
+    "maxCapacity": 18096,
+    "location": "St. Louis, MO"
+  },
+  {
+    "name": "Grand Casino Arena",
+    "maxCapacity": 17954,
+    "location": "St. Paul, MN"
+  },
+  {
+    "name": "KeyBank Center",
+    "maxCapacity": 19070,
+    "location": "Buffalo, NY"
+  },
+  {
+    "name": "Lenovo Center",
+    "maxCapacity": 18299,
+    "location": "Raleigh, NC"
+  },
+  {
+    "name": "Little Caesars Arena",
+    "maxCapacity": 19515,
+    "location": "Detroit, MI"
+  },
+  {
+    "name": "Mattamy Athletic Centre",
+    "maxCapacity": 2796,
+    "location": "Toronto, ON"
+  },
+  {
+    "name": "Pacific Coliseum",
+    "maxCapacity": 17500,
+    "location": "Vancouver, BC"
+  },
+  {
+    "name": "Place Bell",
+    "maxCapacity": 10062,
+    "location": "Laval, QC"
+  },
+  {
+    "name": "PPG Paints Arena",
+    "maxCapacity": 18187,
+    "location": "Pittsburgh, PA"
+  },
+  {
+    "name": "Prudential Center",
+    "maxCapacity": 16514,
+    "location": "Newark, NJ"
+  },
+  {
+    "name": "Rogers Arena",
+    "maxCapacity": 18910,
+    "location": "Vancouver, BC"
+  },
+  {
+    "name": "Rogers Place",
+    "maxCapacity": 18347,
+    "location": "Edmonton, AB"
+  },
+  {
+    "name": "Scotiabank Arena",
+    "maxCapacity": 18800,
+    "location": "Toronto, ON"
+  },
+  {
+    "name": "Scotiabank Centre",
+    "maxCapacity": 10959,
+    "location": "Halifax, NS"
+  },
+  {
+    "name": "Scotiabank Saddledome",
+    "maxCapacity": 19289,
+    "location": "Calgary, AB"
+  },
+  {
+    "name": "TD Coliseum",
+    "maxCapacity": 17383,
+    "location": "Hamilton, ON"
+  },
+  {
+    "name": "TD Place",
+    "maxCapacity": 8585,
+    "location": "Ottawa, ON"
+  },
+  {
+    "name": "Total Mortgage Arena",
+    "maxCapacity": 8412,
+    "location": "Bridgeport, CT"
+  },
+  {
+    "name": "Tsongas Center",
+    "maxCapacity": 6500,
+    "location": "Lowell, MA"
+  },
+  {
+    "name": "UBS Arena",
+    "maxCapacity": 17255,
+    "location": "Elmont, NY"
+  },
+  {
+    "name": "Verdun Auditorium",
+    "maxCapacity": 3795,
+    "location": "Verdun, QC"
+  },
+  {
+    "name": "Videotron Centre",
+    "maxCapacity": 18259,
+    "location": "Québec City, QC"
+  },
+  {
+    "name": "TD Garden",
+    "maxCapacity": 17850,
+    "location": "Boston, MA"
+  }
+]
