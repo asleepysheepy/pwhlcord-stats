@@ -1,8 +1,8 @@
 'use client'
 
-import { MoreHorizontalIcon, Edit04Icon, Delete02Icon } from '@hugeicons/core-free-icons'
+import { Delete02Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
-import Link from 'next/link'
+import { toast } from 'sonner'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,16 +16,9 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { deleteArena } from '@/features/arenas/actions'
-import { urlEditArena } from '@/lib/urls'
+import { ArenaForm } from './arena-form'
 
 type Props = {
   arenas: {
@@ -41,6 +34,11 @@ type Props = {
 
 export function ArenasTable({ arenas, showEditButton = false, showDeleteButton = false }: Props) {
   const showActions = showEditButton || showDeleteButton
+
+  async function handleDelete(id: number) {
+    const { error, message } = await deleteArena(id)
+    toast[error ? 'error' : 'success'](message)
+  }
 
   return (
     <Table>
@@ -72,48 +70,33 @@ export function ArenasTable({ arenas, showEditButton = false, showDeleteButton =
             <TableCell className="text-center">{arena.maxCapacity}</TableCell>
             <TableCell className="text-center">{arena.gamesHosted}</TableCell>
             {showActions && (
-              <TableCell>
-                <AlertDialog>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger render={<Button variant="ghost" size="icon" />}>
-                      <HugeiconsIcon icon={MoreHorizontalIcon} className="size-5" />
-                      <span className="sr-only">Arena actions for {arena.name}</span>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      <DropdownMenuGroup>
-                        {showEditButton && (
-                          <DropdownMenuItem render={<Link href={urlEditArena(arena.id)} />}>
-                            <HugeiconsIcon icon={Edit04Icon} className="size-5" />
-                            <span>Edit {arena.name}</span>
-                          </DropdownMenuItem>
-                        )}
-                        {showDeleteButton && (
-                          <AlertDialogTrigger nativeButton={false} render={<DropdownMenuItem variant="destructive" />}>
-                            <HugeiconsIcon icon={Delete02Icon} className="size-5" />
-                            <span>Delete {arena.name}</span>
-                          </AlertDialogTrigger>
-                        )}
-                      </DropdownMenuGroup>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                  <AlertDialogContent size="sm">
-                    <AlertDialogHeader>
-                      <AlertDialogMedia>
-                        <HugeiconsIcon icon={Delete02Icon} strokeWidth={2} />
-                      </AlertDialogMedia>
-                      <AlertDialogTitle>Delete {arena.name}</AlertDialogTitle>
-                      <AlertDialogDescription>
-                        Are you sure you want to delete {arena.name}? This cannot be undone.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
-                      <AlertDialogAction variant="destructive" onClick={deleteArena.bind(null, arena.id)}>
-                        Delete
-                      </AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
+              <TableCell className="flex flex-row justify-end gap-2">
+                {showEditButton && <ArenaForm arena={arena} />}
+                {showDeleteButton && (
+                  <AlertDialog>
+                    <AlertDialogTrigger render={<Button variant="destructive" />}>
+                      <HugeiconsIcon icon={Delete02Icon} className="size-5" />
+                      <span className="sr-only">Delete {arena.name}</span>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent size="sm">
+                      <AlertDialogHeader>
+                        <AlertDialogMedia>
+                          <HugeiconsIcon icon={Delete02Icon} strokeWidth={2} />
+                        </AlertDialogMedia>
+                        <AlertDialogTitle>Delete {arena.name}</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          Are you sure you want to delete {arena.name}? This cannot be undone.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction variant="destructive" onClick={() => handleDelete(arena.id)}>
+                          Delete
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                )}
               </TableCell>
             )}
           </TableRow>
