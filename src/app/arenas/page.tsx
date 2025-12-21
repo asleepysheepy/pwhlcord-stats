@@ -1,14 +1,12 @@
 import { countDistinct, eq } from 'drizzle-orm'
 import { type Metadata } from 'next'
 import { cacheTag } from 'next/cache'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 import { db } from '@/db'
 import { ArenaTable, GameTable } from '@/db/schema'
 import { getArenaGlobalTag } from '@/features/arenas/cache'
+import { ArenaForm } from '@/features/arenas/components/arena-form'
 import { ArenasTable } from '@/features/arenas/components/arenas-table'
 import { canCreateArena, canDeleteArena, canUpdateArena } from '@/features/arenas/permissions'
-import { urlNewArena } from '@/lib/urls'
 
 export default async function ArenasPage() {
   const arenas = await fetchArenas()
@@ -17,15 +15,11 @@ export default async function ArenasPage() {
   const showDeleteButton = await canDeleteArena()
 
   return (
-    <div className="mx-auto max-w-lg">
-      <div className="mb-8">
+    <div className="mx-auto max-w-xl">
+      <div className="mb-12">
         <div className="flex flex-row justify-between">
-          <h1 className="mb-4 text-3xl font-semibold">Arenas</h1>
-          {showNewButton && (
-            <Button render={<Link href={urlNewArena()} />} nativeButton={false}>
-              + New Arena
-            </Button>
-          )}
+          <h1 className="mb-6 text-3xl font-semibold">Arenas</h1>
+          {showNewButton && <ArenaForm />}
         </div>
         <p className="text-muted-foreground text-xl">
           A list of all arenas which have hosted, or are scheduled to host, a PWHL game
@@ -40,6 +34,8 @@ export default async function ArenasPage() {
 async function fetchArenas() {
   'use cache'
   cacheTag(getArenaGlobalTag())
+
+  await new Promise((resolve) => setTimeout(resolve, 9000))
 
   const arenas = await db
     .select({
