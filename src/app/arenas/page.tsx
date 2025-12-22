@@ -35,8 +35,6 @@ async function fetchArenas() {
   'use cache'
   cacheTag(getArenaGlobalTag())
 
-  await new Promise((resolve) => setTimeout(resolve, 9000))
-
   const arenas = await db
     .select({
       id: ArenaTable.id,
