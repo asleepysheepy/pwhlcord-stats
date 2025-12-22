@@ -18,7 +18,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { deleteArena } from '@/features/arenas/actions'
-import { ArenaForm } from './arena-form'
+import { ArenaForm } from '@/features/arenas/components/arena-form'
 
 type Props = {
   arenas: {

@@ -3,7 +3,7 @@ import 'server-only'
 import { eq } from 'drizzle-orm'
 import { db } from '@/db'
 import { ArenaTable } from '@/db/schema'
-import { updateArenaCache } from './cache'
+import { updateArenaCache } from '@/features/arenas/cache'
 
 /**
  * Attempts to insert a new arena into the database
@@ -42,6 +42,12 @@ export async function updateArena(id: number, data: typeof ArenaTable.$inferInse
   return updatedArena
 }
 
+/**
+ * Attempts to delete an arena from the database
+ *
+ * @param id the id of the arena to delete
+ * @returns the deleted arena
+ */
 export async function deleteArena(id: number) {
   const [deletedArena] = await db.delete(ArenaTable).where(eq(ArenaTable.id, id)).returning()
 

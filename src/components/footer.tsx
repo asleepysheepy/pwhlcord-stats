@@ -1,8 +1,8 @@
 import { DiscordIcon, Github01Icon, Key01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import Link from 'next/link'
+import { Separator } from '@/components/ui/separator'
 import { urlLogin } from '@/lib/urls'
-import { Separator } from './ui/separator'
 
 const footerLinks = [
   { url: urlLogin(), icon: Key01Icon, label: 'Admin Login' },

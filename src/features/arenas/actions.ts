@@ -19,8 +19,6 @@ import { arenaSchema } from '@/features/arenas/schema'
 export async function createArena(unsafeData: z.infer<typeof arenaSchema>) {
   const { success, data } = arenaSchema.safeParse(unsafeData)
 
-  console.log(await canCreateArena())
-
   if (!success || !(await canCreateArena())) {
     return { error: true, message: 'There was an error creating this arena' }
   }
@@ -47,11 +45,17 @@ export async function updateArena(id: number, unsafeData: z.infer<typeof arenaSc
   return { error: false, message: `Successfully updated the arena, ${arena.name}` }
 }
 
+/**
+ * Ensures the user has permission to delete an arena, if yes, deletes the arena.
+ *
+ * @param id the id of the arena to delete
+ * @returns An error status and a success or failure message
+ */
 export async function deleteArena(id: number) {
   if (!(await canDeleteArena())) {
     return { error: true, message: 'There was an error deleting this arena' }
   }
 
   const arena = await deleteArenaDb(id)
-  return { error: false, message: `Successfully updated the arena, ${arena.name}` }
+  return { error: false, message: `Successfully deleted the arena, ${arena.name}` }
 }

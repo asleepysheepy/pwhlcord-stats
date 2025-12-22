@@ -14,9 +14,7 @@ import { HugeiconsIcon } from '@hugeicons/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { authClient } from '@/lib/auth-client'
-import { urlArenas, urlHome, urlLogin } from '@/lib/urls'
-import { Button } from './ui/button'
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,7 +28,9 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from './ui/dropdown-menu'
+} from '@/components/ui/dropdown-menu'
+import { authClient } from '@/lib/auth-client'
+import { urlArenas, urlHome, urlLogin } from '@/lib/urls'
 
 export function Navbar() {
   const { data: session } = authClient.useSession()
