@@ -38,7 +38,7 @@
     "zod": "^4.2.1"
   },
   "devDependencies": {
-    "@eslint/compat": "^2.0.0",
+    "@eslint/compat": "^2.0.2",
     "@storybook/addon-themes": "^10.1.10",
     "@storybook/nextjs-vite": "10.1.10",
     "@tailwindcss/postcss": "^4",
