@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Boston Fleet",
+    "shortName": "BOS",
+    "location": "Boston",
+    "primaryArenaId": 31
+  },
+  {
+    "id": 2,
+    "name": "Minnesota Frost",
+    "shortName": "MIN",
+    "location": "Minnesota",
+    "primaryArenaId": 13
+  },
+  {
+    "id": 3,
+    "name": "Montréal Victoire",
+    "shortName": "MTL",
+    "location": "Montréal",
+    "primaryArenaId": 19
+  },
+  {
+    "id": 4,
+    "name": "New York Sirens",
+    "shortName": "NYS",
+    "location": "New York",
+    "primaryArenaId": 21
+  },
+  {
+    "id": 5,
+    "name": "Ottawa Charge",
+    "shortName": "OTT",
+    "location": "Ottawa",
+    "primaryArenaId": 29
+  },
+  {
+    "id": 6,
+    "name": "Toronto Sceptres",
+    "shortName": "TOR",
+    "location": "Toronto",
+    "primaryArenaId": 11
+  },
+  {
+    "id": 7,
+    "name": "Vancouver Goldeneyes",
+    "shortName": "VAN",
+    "location": "Vancouver",
+    "primaryArenaId": 18
+  },
+  {
+    "id": 8,
+    "name": "Seattle Torrent",
+    "shortName": "SEA",
+    "location": "Seattle",
+    "primaryArenaId": 10
+  }
+]

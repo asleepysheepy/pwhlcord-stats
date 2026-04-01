@@ -1,22 +1,17 @@
 import 'dotenv/config'
 
 import { db } from '@/db'
-import { ArenaTable } from '@/db/schema'
-import { arenaSchema } from '@/features/arenas/schema'
+import { ArenaTable, TeamTable } from '@/db/schema'
 
 import arenaData from './arenas.json'
-
-async function createArenas() {
-  // Reset Arenas Table
-  await db.delete(ArenaTable)
-
-  // Ensure arenas data is valid before attempting to insert it into the database
-  const arenas = arenaData.map((arena) => arenaSchema.parse(arena))
-  await db.insert(ArenaTable).values(arenas)
-}
+import teamData from './teams.json'
 
 async function initData() {
-  await createArenas()
+  await db.delete(TeamTable)
+  await db.delete(ArenaTable)
+
+  await db.insert(ArenaTable).values(arenaData)
+  await db.insert(TeamTable).values(teamData)
 }
 
 initData().catch((e) => console.error(e))

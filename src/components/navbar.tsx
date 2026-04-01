@@ -30,7 +30,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { authClient } from '@/lib/auth-client'
-import { urlArenas, urlHome, urlLogin } from '@/lib/urls'
+import { urlArenas, urlHome, urlLogin, urlTeams } from '@/lib/urls'
 
 export function Navbar() {
   const { data: session } = authClient.useSession()
@@ -50,7 +50,7 @@ export function Navbar() {
           <Link className="hover:text-primary-foreground dark:hover:text-primary text-xl hover:underline" href="#">
             Games
           </Link>
-          <Link className="hover:text-primary-foreground dark:hover:text-primary text-xl hover:underline" href="#">
+          <Link className="hover:text-primary-foreground dark:hover:text-primary text-xl hover:underline" href={urlTeams()}>
             Teams
           </Link>
           <Link

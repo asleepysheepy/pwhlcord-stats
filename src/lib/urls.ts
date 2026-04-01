@@ -9,3 +9,7 @@ export function urlLogin() {
 export function urlArenas() {
   return '/arenas'
 }
+
+export function urlTeams() {
+  return '/teams'
+}
