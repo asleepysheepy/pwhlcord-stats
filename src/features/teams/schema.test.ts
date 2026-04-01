@@ -4,7 +4,7 @@ import { teamSchema } from './schema'
 describe('Team Schema', () => {
   describe('location', () => {
     it('should fail validation if location is empty', () => {
-      const team = { name: 'Columbus Busses', shortName: 'BUS' }
+      const team = { name: 'Columbus Busses', shortName: 'BUS', primaryArenaId: 1 }
       const result = teamSchema.safeParse(team)
 
       expect(result.success).toEqual(false)
@@ -19,7 +19,7 @@ describe('Team Schema', () => {
     })
 
     it('should fail validation if location is not a string', () => {
-      const team = { name: 'Columbus Busses', location: 12345, shortName: 'BUS' }
+      const team = { name: 'Columbus Busses', location: 12345, shortName: 'BUS', primaryArenaId: 1 }
       const result = teamSchema.safeParse(team)
 
       expect(result.success).toEqual(false)
@@ -34,7 +34,7 @@ describe('Team Schema', () => {
     })
 
     it('should pass validation if location is a string', () => {
-      const team = { name: 'Columbus Busses', location: 'Columbus', shortName: 'BUS' }
+      const team = { name: 'Columbus Busses', location: 'Columbus', shortName: 'BUS', primaryArenaId: 1 }
       const result = teamSchema.safeParse(team)
 
       expect(result.success).toEqual(true)
@@ -45,7 +45,7 @@ describe('Team Schema', () => {
 
   describe('name', () => {
     it('should fail validation if name is empty', () => {
-      const team = { location: 'Columbus', shortName: 'BUS' }
+      const team = { location: 'Columbus', shortName: 'BUS', primaryArenaId: 1 }
       const result = teamSchema.safeParse(team)
 
       expect(result.success).toEqual(false)
@@ -60,7 +60,7 @@ describe('Team Schema', () => {
     })
 
     it('should fail validation if name is not a string', () => {
-      const team = { location: 'Columbus', name: 1234, shortName: 'BUS' }
+      const team = { location: 'Columbus', name: 1234, shortName: 'BUS', primaryArenaId: 1 }
       const result = teamSchema.safeParse(team)
 
       expect(result.success).toEqual(false)
@@ -75,7 +75,7 @@ describe('Team Schema', () => {
     })
 
     it('should pass validation if name is a string', () => {
-      const team = { name: 'Columbus Busses', location: 'Columbus', shortName: 'BUS' }
+      const team = { name: 'Columbus Busses', location: 'Columbus', shortName: 'BUS', primaryArenaId: 1 }
       const result = teamSchema.safeParse(team)
 
       expect(result.success).toEqual(true)
@@ -86,7 +86,7 @@ describe('Team Schema', () => {
 
   describe('shortName', () => {
     it('should fail validation if shortName is empty', () => {
-      const team = { location: 'Columbus', name: 'Columbus Busses' }
+      const team = { location: 'Columbus', name: 'Columbus Busses', primaryArenaId: 1 }
       const result = teamSchema.safeParse(team)
 
       expect(result.success).toEqual(false)
@@ -101,7 +101,7 @@ describe('Team Schema', () => {
     })
 
     it('should fail validation if shortName is not a string', () => {
-      const team = { location: 'Columbus', name: 'Columbus Busses', shortName: 1234 }
+      const team = { location: 'Columbus', name: 'Columbus Busses', shortName: 1234, primaryArenaId: 1 }
       const result = teamSchema.safeParse(team)
 
       expect(result.success).toEqual(false)
@@ -116,7 +116,7 @@ describe('Team Schema', () => {
     })
 
     it('should fail validation if shortName is less than 3 characters', () => {
-      const team = { location: 'Columbus', name: 'Columbus Busses', shortName: 'BU' }
+      const team = { location: 'Columbus', name: 'Columbus Busses', shortName: 'BU', primaryArenaId: 1 }
       const result = teamSchema.safeParse(team)
 
       expect(result.success).toEqual(false)
@@ -131,7 +131,7 @@ describe('Team Schema', () => {
     })
 
     it('should fail validation if shortName is more than 3 characters', () => {
-      const team = { location: 'Columbus', name: 'Columbus Busses', shortName: 'CBUS' }
+      const team = { location: 'Columbus', name: 'Columbus Busses', shortName: 'CBUS', primaryArenaId: 1 }
       const result = teamSchema.safeParse(team)
 
       expect(result.success).toEqual(false)
@@ -146,7 +146,7 @@ describe('Team Schema', () => {
     })
 
     it('convert the shortName to uppercase if not already', () => {
-      const team = { location: 'Columbus', name: 'Columbus Busses', shortName: 'bus' }
+      const team = { location: 'Columbus', name: 'Columbus Busses', shortName: 'bus', primaryArenaId: 1 }
       const result = teamSchema.safeParse(team)
 
       expect(result.success).toEqual(true)
@@ -158,7 +158,7 @@ describe('Team Schema', () => {
     })
 
     it('should pass validation if shortName is a string', () => {
-      const team = { location: 'Columbus', name: 'Columbus Busses', shortName: 'BUS' }
+      const team = { location: 'Columbus', name: 'Columbus Busses', shortName: 'BUS', primaryArenaId: 1 }
       const result = teamSchema.safeParse(team)
 
       expect(result.success).toEqual(true)

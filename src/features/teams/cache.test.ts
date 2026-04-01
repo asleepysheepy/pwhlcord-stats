@@ -9,18 +9,18 @@ vi.mock(import('next/cache'), async (importOriginal) => ({
 
 describe('Teams Cache', () => {
   describe('getTeamGlobalTag', () => {
-    it('should return the arenas global tag', () => {
+    it('should return the teams global tag', () => {
       const result = TeamsCache.getTeamGlobalTag()
 
-      expect(result).toEqual('global:arenas')
+      expect(result).toEqual('global:teams')
     })
   })
 
   describe('getTeamIdTag', () => {
-    it('should return the arenas id tag', () => {
+    it('should return the teams id tag', () => {
       const result = TeamsCache.getTeamIdTag(15)
 
-      expect(result).toEqual('id:15-arenas')
+      expect(result).toEqual('id:15-teams')
     })
   })
 
@@ -28,13 +28,13 @@ describe('Teams Cache', () => {
     it('should update the global tag', () => {
       TeamsCache.updateTeamCache(15)
 
-      expect(updateTag).toHaveBeenNthCalledWith(1, 'global:arenas')
+      expect(updateTag).toHaveBeenNthCalledWith(1, 'global:teams')
     })
 
     it('should update the id tag', () => {
       TeamsCache.updateTeamCache(15)
 
-      expect(updateTag).toHaveBeenNthCalledWith(2, 'id:15-arenas')
+      expect(updateTag).toHaveBeenNthCalledWith(2, 'id:15-teams')
     })
   })
 })
