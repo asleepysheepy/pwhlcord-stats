@@ -202,5 +202,17 @@
     "name": "Videotron Centre",
     "maxCapacity": 18259,
     "location": "Québec City, QC"
+  },
+  {
+    "id": 35,
+    "name": "T-Mobile Arena",
+    "maxCapacity": 175000,
+    "location": "Paradise, NV"
+  },
+  {
+    "id": 36,
+    "name": "SAP Center",
+    "maxCapacity": 17562,
+    "location": "San José, CA"
   }
 ]

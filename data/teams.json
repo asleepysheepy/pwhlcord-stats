@@ -4,7 +4,7 @@
     "name": "Boston Fleet",
     "shortName": "BOS",
     "location": "Boston",
-    "primaryArenaId": 31
+    "primaryArenaId": 2
   },
   {
     "id": 2,
@@ -32,7 +32,7 @@
     "name": "Ottawa Charge",
     "shortName": "OTT",
     "location": "Ottawa",
-    "primaryArenaId": 29
+    "primaryArenaId": 8
   },
   {
     "id": 6,
@@ -54,5 +54,33 @@
     "shortName": "SEA",
     "location": "Seattle",
     "primaryArenaId": 10
+  },
+  {
+    "id": 9,
+    "name": "PWHL Detroit",
+    "shortName": "DET",
+    "Location": "Detroit",
+    "primaryArenaId": 16
+  },
+  {
+    "id": 10,
+    "name": "PWHL Hamilton",
+    "shortName": "HAM",
+    "location": "Hamilton",
+    "primaryArenaId": 27
+  },
+  {
+    "id": 11,
+    "name": "PWHL Las Vegas",
+    "shortName": "LV",
+    "Location": "Las Vegas",
+    "primaryArenaId": 35
+  },
+  {
+    "id": 12,
+    "name": "PWHL San José",
+    "shortName": "SJ",
+    "Location": "San José",
+    "primaryArenaId": 36
   }
 ]
