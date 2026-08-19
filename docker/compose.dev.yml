@@ -35,7 +35,7 @@ services:
     ports:
       - 5432:5432
     healthcheck:
-      test: [ "CMD", "pg_isready", "-U", "postgres" ]
+      test: ['CMD', 'pg_isready', '-U', 'postgres']
       interval: 5s
       timeout: 5s
       retries: 5
@@ -43,10 +43,10 @@ services:
   migrations:
     build:
       context: ..
-      dockerfile: ./docker/Dockerfile.dev
+      dockerfile: ./docker/dev.Dockerfile
     image: asleepysheepy/pwhlcord-stats-web
     pull_policy: never
-    command: ["npx", "drizzle-kit", "migrate"]
+    command: ['npx', 'drizzle-kit', 'migrate']
     env_file:
       - ../.env.dev
     depends_on:
