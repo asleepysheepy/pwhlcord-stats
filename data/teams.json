@@ -59,7 +59,7 @@
     "id": 9,
     "name": "PWHL Detroit",
     "shortName": "DET",
-    "Location": "Detroit",
+    "location": "Detroit",
     "primaryArenaId": 16
   },
   {
@@ -73,14 +73,14 @@
     "id": 11,
     "name": "PWHL Las Vegas",
     "shortName": "LV",
-    "Location": "Las Vegas",
+    "location": "Las Vegas",
     "primaryArenaId": 35
   },
   {
     "id": 12,
     "name": "PWHL San José",
     "shortName": "SJ",
-    "Location": "San José",
+    "location": "San José",
     "primaryArenaId": 36
   }
 ]
