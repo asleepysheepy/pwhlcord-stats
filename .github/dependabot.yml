@@ -16,3 +16,12 @@ updates:
           - 'major'
           - 'minor'
           - 'patch'
+      next-js:
+        applies-to: version-updates
+        patterns:
+          - 'next'
+          - 'eslint-config-next'
+        update-types:
+          - 'major'
+          - 'minor'
+          - 'patch'
