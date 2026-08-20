@@ -50,7 +50,10 @@ export function Navbar() {
           <Link className="hover:text-primary-foreground dark:hover:text-primary text-xl hover:underline" href="#">
             Games
           </Link>
-          <Link className="hover:text-primary-foreground dark:hover:text-primary text-xl hover:underline" href={urlTeams()}>
+          <Link
+            className="hover:text-primary-foreground dark:hover:text-primary text-xl hover:underline"
+            href={urlTeams()}
+          >
             Teams
           </Link>
           <Link

@@ -9,9 +9,9 @@ export const TeamTable = pgTable('team', {
   createdAt,
   updatedAt,
 
-  location: text(),
-  name: text(),
-  shortName: text(),
+  location: text().notNull(),
+  name: text().notNull(),
+  shortName: text().notNull(),
 
   primaryArenaId: integer()
     .notNull()

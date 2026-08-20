@@ -20,6 +20,7 @@ export default async function LoginPage() {
   )
 }
 
+export const instant = false
 export const metadata: Metadata = {
   title: 'Log in',
   description: 'The log in page',

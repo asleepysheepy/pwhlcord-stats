@@ -1,6 +1,11 @@
 'use server'
 
+import { countDistinct, eq } from 'drizzle-orm'
+import { cacheTag } from 'next/cache'
 import { z } from 'zod'
+import { db } from '@/db'
+import { ArenaTable, GameTable } from '@/db/schema'
+import { getArenaGlobalTag } from '@/features/arenas/cache'
 import {
   createArena as createArenaDb,
   deleteArena as deleteArenaDb,
@@ -8,6 +13,32 @@ import {
 } from '@/features/arenas/db'
 import { canCreateArena, canDeleteArena, canUpdateArena } from '@/features/arenas/permissions'
 import { arenaSchema } from '@/features/arenas/schema'
+
+/**
+ * Fetches a list of all arenas.
+ *
+ * @returns A list of arenas including id, name, capacity, location,
+ *   and number of games hosted, sorted by arena name.
+ */
+export async function fetchArenas() {
+  'use cache'
+  cacheTag(getArenaGlobalTag())
+
+  const arenas = await db
+    .select({
+      id: ArenaTable.id,
+      name: ArenaTable.name,
+      maxCapacity: ArenaTable.maxCapacity,
+      location: ArenaTable.location,
+      gamesHosted: countDistinct(GameTable),
+    })
+    .from(ArenaTable)
+    .leftJoin(GameTable, eq(GameTable.arenaId, ArenaTable.id))
+    .orderBy(ArenaTable.name)
+    .groupBy(ArenaTable.id)
+
+  return arenas
+}
 
 /**
  * Ensures the creation data is valid and the user has permission to create an arena,
