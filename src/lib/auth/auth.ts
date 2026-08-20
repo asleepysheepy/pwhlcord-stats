@@ -1,31 +1,12 @@
 import 'server-only'
 
 import { betterAuth } from 'better-auth'
-import { drizzleAdapter } from 'better-auth/adapters/drizzle'
-import { nextCookies } from 'better-auth/next-js'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { db } from '@/db'
 import { urlLogin } from '@/lib/urls'
+import { betterAuthConfig } from './auth-config'
 
-export const auth = betterAuth({
-  database: drizzleAdapter(db, {
-    provider: 'pg',
-  }),
-  emailAndPassword: {
-    enabled: true,
-    disableSignUp: false,
-    autoSignIn: false,
-    minPasswordLength: 8,
-  },
-  session: {
-    cookieCache: {
-      enabled: true,
-      maxAge: 60 * 5, // 5 minutes
-    },
-  },
-  plugins: [nextCookies()],
-})
+export const auth = betterAuth(betterAuthConfig)
 
 export async function verifySession() {
   const session = await auth.api.getSession({

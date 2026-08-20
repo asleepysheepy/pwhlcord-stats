@@ -1,6 +1,6 @@
 import 'server-only'
 
-import { getCurrentUser } from '@/lib/auth'
+import { getCurrentUser } from '@/lib/auth/auth'
 
 /**
  * Gets the current user from the session and, if they exist, check if they're

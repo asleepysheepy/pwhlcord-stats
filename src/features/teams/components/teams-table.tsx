@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import { toast } from 'sonner'
 import { DeleteWithConfirmation } from '@/components/delete-with-confirmation'

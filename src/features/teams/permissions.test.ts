@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { getCurrentUser } from '@/lib/auth'
+import { getCurrentUser } from '@/lib/auth/auth'
 import * as TeamPermissions from './permissions'
 
-vi.mock(import('@/lib/auth'), async (importOriginal) => ({
+vi.mock(import('@/lib/auth/auth'), async (importOriginal) => ({
   ...(await importOriginal()),
   getCurrentUser: vi.fn(),
 }))

@@ -1,6 +1,6 @@
 import { type Metadata } from 'next'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { verifyNoSession } from '@/lib/auth'
+import { verifyNoSession } from '@/lib/auth/auth'
 import { LoginForm } from './components/login-form'
 
 export default async function LoginPage() {
