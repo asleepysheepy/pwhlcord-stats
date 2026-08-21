@@ -1,42 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with
-[`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PWHLcord Stats
 
-## Getting Started
+![GitHub License](https://img.shields.io/github/license/asleepysheepy/pwhlcord-bot?style=for-the-badge)
 
-First, run the development server:
+PWHLcord Stats tracks assorted stats about the PWHL and the [PWHL Discord](https://discord.gg/FpQPhTuKDK).
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Frameworks, Libraries, and Dependencies](#frameworks-libraries-and-dependencies)
+- [Privacy Policy](#privacy-policy)
+- [Contributing](#contributing)
+- [License](#license)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Frameworks, Libraries, and Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+PWHLcord Stats is built with the following:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically
-optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- React/React DOM
+- Next.js
+- Drizzle ORM 
+- Tailwind CSS
+- Base UI
+- ShadCN
+- Prettier & ESLint
+- Vitest & Testing Library
+- ...and many more! See [package.json](./package.json) for a full list of dependencies 
 
-## Learn More
+## Privacy Policy
 
-To learn more about Next.js, take a look at the following resources:
+PWHLcord Stats does not collect any user data, at all.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions
-are welcome!
+Section coming soon
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the
-[Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
-from the creators of Next.js.
+PWHLcord Stats is licensed under the MIT License.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for
-more details.
+You can read the full license here: [MIT License](./LICENSE)
+
+A summary of the license is available here: [License Summary](https://www.tldrlegal.com/license/mit-license)
