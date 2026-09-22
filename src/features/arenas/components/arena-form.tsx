@@ -47,9 +47,7 @@ export function ArenaForm({ arena }: Props) {
   })
 
   async function onSubmit(values: z.infer<typeof arenaSchema>) {
-    const action = isUpdating ? updateArena.bind(null, arena.id) : createArena
-
-    const { error, message } = await action(values)
+    const { error, message } = isUpdating ? await updateArena(arena.id, values) : await createArena(values)
 
     if (error) {
       form.setError('root.serverError', { message })
@@ -95,7 +93,7 @@ export function ArenaForm({ arena }: Props) {
                   <FieldLabel htmlFor="arena-form-arena-max-capacity">Max Capacity</FieldLabel>
                   <Input
                     {...field}
-                    id="arena-form-arena-maxCapacity"
+                    id="arena-form-arena-max-capacity"
                     aria-invalid={fieldState.invalid}
                     type="number"
                     step={1}

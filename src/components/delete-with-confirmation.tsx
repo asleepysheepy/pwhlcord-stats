@@ -14,12 +14,17 @@ import {
 } from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
 
-export function DeleteWithConfirmation({ entityName, onClick }: { entityName: string; onClick: () => void }) {
+type Props = {
+  entityName: string
+  onClick: () => void
+}
+
+export function DeleteWithConfirmation({ entityName, onClick }: Props) {
   return (
     <AlertDialog>
       <AlertDialogTrigger render={<Button variant="destructive" />}>
         <HugeiconsIcon icon={Delete02Icon} className="size-5" />
-        <span className="sr-only">Delete {entityName}</span>
+        <span className="sr-only">{` Delete ${entityName}`}</span>
       </AlertDialogTrigger>
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
@@ -28,7 +33,7 @@ export function DeleteWithConfirmation({ entityName, onClick }: { entityName: st
           </AlertDialogMedia>
           <AlertDialogTitle>Delete {entityName}</AlertDialogTitle>
           <AlertDialogDescription>
-            Are you sure you want to delete {entityName}? This cannot be undone.
+            {`Are you sure you want to delete ${entityName}? This cannot be undone.`}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

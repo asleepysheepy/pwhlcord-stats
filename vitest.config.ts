@@ -11,5 +11,6 @@ export default defineConfig({
     alias: {
       'server-only': resolve(import.meta.dirname, './test/mocks/server-only.ts'),
     },
+    mockReset: true,
   },
 })
